@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Design Of Structure</title>
+</head>
+<body >
+    <header>
+        <nav class="navbar rounded bg-dark-subtle">
+            <div class="container-fluid">
+              <div>
+                <H3>MD. M<span class="text-danger fst-italic">I</span>SB<span class="text-success fst-italic">A</span>HUL HA<span class="text-danger-emphasis fst-italic">Q</span>UE</H3>
+                <P class="text-success mb-1">Junior Web Developer & D. Engineer (Civil)</P>
+                <p class="text-success-emphasis"><span class="text-primary-emphasis">Achived:</span> From Programming Hero & Cumilla Polytechnic Institute</p>
+              </div>
+               
+              <h1 class="text-black">Let's Design Your Building</h1>
+            </div>
+          </nav>
+    </header>
+
+    <!--  -->
+    <main class="my-5 container">
+        <!-- step -1 -->
+        <div class="row">
+            <div class="col col-md-8">
+                <section id="Design-Load">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                      <!-- Step-1 Design-Load -->
+                        <div class="col">
+                          <div class="card h-100">
+                            <div class="card-body">
+                              <h5 class="card-title">Step-1 Design-Load</h5>
+                              <div>
+                                <input id="Self-weight" class="rounded mb-2 w-100" type="text" placeholder="Thickness of slab kg/m">
+                                <input id="Live-load" class="rounded mb-2  w-100"  type="text" placeholder="Live load kg/m">
+                                <input id="Dead-load" class="rounded mb-2 w-100"  type="text" placeholder="Dead load kg/m">
+                                <input id="Floor-ceiling" class="rounded mb-2 w-100"  type="text" placeholder="Floor & ceiling finishing kg/m">
+                                <input id="False-ceiling" class="rounded mb-2 w-100"  type="text" placeholder="False ceiling kg/m">
+                              </div>
+                            </div>
+                            <div class="card-footer">
+                                <button onclick="calculateLoad()" type="button" class="btn btn-danger">Danger</button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Step-2 Maximum share force-->
+
+                        <div class="col">
+                          <div class="card h-100">
+                            <div class="card-body">
+                              <h5 class="card-title">Step-2 Maximum share force</h5>
+                              <div>
+                                <input id="longSpan-sf" class="rounded mb-2 w-100" type="text" placeholder="Size of Short span">
+                                <input id="shortSpan-sf" class="rounded mb-2  w-100"  type="text" placeholder="Size of Short span">
+
+                                <div class="d-flex gap-2">
+                                    <input id="slab-Width" class="rounded mb-2  w-50"  type="text" placeholder="s -m">
+                                    <input id="slab-Length" class="rounded mb-2  w-50"  type="text" placeholder="L -m">
+                                </div>
+                               
+                              </div>
+                            </div>
+                            <div class="card-footer">
+                                <button onclick="calculateSF()" type="button" class="btn btn-primary">Danger</button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Step-3 Maximum bending moment -->
+                        <div class="col">
+                          <div class="card h-100">
+                            <div class="card-body p-1">
+                              <h5 class="card-title">Step-3 Maximum bending moment</h5>
+                              <div>
+                                <h5>Short span</h5>
+                                <div class="d-flex gap-1">
+                                  <input id="c-cont-short" class="rounded mb-2 w-100" type="text" placeholder="c-cont">
+                                 <div> <input id="c-middle-short" class="rounded mb-2  w-100"  type="text" placeholder="c-middle span">  
+                                  <input id="c-discont-short" class="rounded mb-2  w-100"  type="text" placeholder="c-discontinuous"></div>  
+                                </div>
+
+                                <h5>Long span</h5>
+                                <div class="d-flex gap-1 ">
+                                  <input id="c-cont-long" class="rounded mb-2 w-100" type="text" placeholder="c-cont">
+                                  
+                                  <div>  
+                                    <input id="c-middle-long" class="rounded mb-2  w-100"  type="text" placeholder="c-middle span">   
+                                     <input id="c-discont-long" class="rounded mb-2  w-100"  type="text" placeholder="c-discontinuous"> </div> 
+                              
+                                </div>
+                               
+                              </div>
+                            </div>
+                            <div class="card-footer">
+                                <button onclick="calculateBM()" type="button" class="btn btn-primary w-100">Danger</button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Step-4.A Depth of slab -->
+                        <div class="col">
+                          <div class="card h-100">
+                            <div class="card-body p-1">
+                              <h5 class="card-title">Step-4.A Effective Depth of slab</h5>
+                              <div>
+                                <h5>Short span</h5>
+                                <div class="d-flex gap-1">
+                                  <div> <input id="max-BM-short" class="rounded mb-2 w-100" type="text" placeholder="max-BM-short">
+                                    <input id="n" class="rounded mb-2  w-100"  type="text" placeholder="n"> </div>
+
+                                  <div>   <input id="fs" class="rounded mb-2  w-100"  type="text" placeholder="fs">  
+                                    <input id="fc" class="rounded mb-2  w-100"  type="text" placeholder="fc"> </div>
+                                  
+                                
+                                </div>
+
+                                <h5>Long span</h5>
+                                  <input id="max-BM-long" class="rounded mb-2 w-100" type="text" placeholder="max-BM-long"> 
+                               
+                              </div>
+                            </div>
+                            <div class="card-footer">
+                                <button onclick="calculateDepth()" type="button" class="btn btn-primary w-100">Danger</button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Step-4.B Depth of slab -->
+                        <div class="col">
+                          <div class="card h-100">
+                            <div class="card-body p-1">
+                              <h5 class="card-title">Step-4.B Total Depth of slab</h5>
+                              <input class="w-100 rounded" type="text" id="effective-depth-short" placeholder="effective depth short cm">
+                              <input class="w-100 mt-2 rounded" type="text" id="effective-depth-long" placeholder="effective depth long cm">
+                              <input class="w-100 mt-2 rounded" type="text" id="rod-size" placeholder="rod size cm">
+                              <input class="w-100 mt-2 rounded" type="text" id="covering cm" placeholder="covering">
+                            </div>
+                            <div class="card-footer">
+                                <button onclick="calculateTotalDepth()" type="button" class="btn btn-primary w-100">Danger</button>
+                            </div>
+                          </div>
+                        </div>
+                       
+                      </div>
+                </section>
+            </div>
+
+
+            <!-- result -->
+            <div class="col col-md-4">
+                <section id="show-result">
+                      
+                          <div class="card h-100 p-2">
+                            <h5 class="text-danger">1. design load</h5>
+                            <h6>1. Design Load <span class="text-danger" id="resultDesignLoad"></span> kg/m</h6>
+                            <!-- 2. maximum share force -->
+                            <h5 class="text-danger">2. maximum share force</h5>
+                            <h6>a LongSpan Share Force <span class="text-danger" id="result-longSpan-sf"></span> kg/m</h6>
+                            <h6>b shortSpan Share Force <span class="text-danger" id="result-shortSpan-sf"></span> kg/m</h6>
+                            <!--3. maximum bending moment -->
+                            <h5 class="text-danger">3. maximum bending moment</h5>
+                            <h6>a. shortSpan bending moment kg-cm
+                            <ol>
+                              <li >Cont.ends(-) <span class="text-danger" id="short-Cont-ends"></span></li>
+                              <li>Middle span (+) <span class="text-danger" id="short-Middle-span"></span></li>
+                              <li >DisC. ends(-) <span class="text-danger" id="short-DisC-ends"></span></li>
+                            </ol>
+                          </h6>
+                            <h6>b. longtSpan bending moment kg-cm
+                            <ol>
+                              <li >Cont.ends(-) <span class="text-danger" id="long-Cont-ends"></span></li>
+                              <li >Middle span (+) <span class="text-danger" id="long-Middle-span"></span></li>
+                              <li >DisC. ends(-) <span class="text-danger" id="long-DisC-ends"></span></li>
+                            </ol>
+                          </h6>
+                          <!-- slab depth -->
+                          <h5 class="text-danger">4.A Slab Effective Depth</h5>
+                          <h6>a. Short span <span id="Short-span-depth" class="text-danger"></span></h6>
+                          <h6>b. Long span <span id="long-span-depth" class="text-danger"></span></h6>
+                          <!--  -->
+                          <h5 class="text-danger">4.B Slab Total Depth</h5>
+                          <h6>a. Short span <span id="Short-span-Total_depth" class="text-danger"></span></h6>
+                          <h6>b. Long span <span id="long-span-Total_depth" class="text-danger"></span></h6>
+                        </div>                    
+                </section>
+            </div>
+        </div>
+       
+        <!--  -->
+        
+    </main>
+
+
+    <!-- bootsrap -->
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
