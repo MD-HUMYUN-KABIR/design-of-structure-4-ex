@@ -50,13 +50,13 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button onclick="calculateLoad()" type="button" class="btn btn-danger">Danger</button>
+                  <button onclick="calculateLoad()" type="button" class="btn btn-danger">Design Load</button>
                 </div>
               </div>
             </div>
-
+            <!--  -->
             <!-- Step-2 Maximum share force-->
-
+            <!--  -->
             <div class="col">
               <div class="card h-100">
                 <div class="card-body">
@@ -72,11 +72,13 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button onclick="calculateSF()" type="button" class="btn btn-primary">Danger</button>
+                  <button onclick="calculateSF()" type="button" class="btn btn-primary">Share Force</button>
                 </div>
               </div>
             </div>
+            <!--  -->
             <!-- Step-3 Maximum bending moment -->
+            <!--  -->
             <div class="col">
               <div class="card h-100">
                 <div class="card-body p-1">
@@ -121,7 +123,7 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button onclick="calculateBM()" type="button" class="btn btn-primary w-100">Danger</button>
+                  <button onclick="calculateBM()" type="button" class="btn btn-primary w-100">Bending Moment</button>
                 </div>
               </div>
             </div>
@@ -132,9 +134,10 @@
                   <h5 class="card-title">Step-4.A Effective Depth of slab</h5>
                   <h6>a. Short span d <span id="Short-span-EffectiveDepth" class="text-danger"></span></h6>
                   <h6>b. Long span d <span id="long-span-EffectiveDepth" class="text-danger"></span></h6>
+                  <h5 class="card-title"> Total Depth of slab</h5>
                   <h6>a. Short span D <span id="Short-span-TotalDepth" class="text-danger"></span></h6>
                   <h6>b. Long span D <span id="long-span-TotalDepth" class="text-danger"></span></h6>
-                  <h6>J <span id="j"></span></h6>
+                  <h6>J <span id="j" class="text-danger"></span></h6>
                   <div>
                     <h5>Short span</h5>
                     <div class="d-flex gap-1">
@@ -152,31 +155,34 @@
                     <h5>Long span</h5>
                     <input id="max-BM-long" class="rounded mb-2 w-100" type="text" placeholder="max-BM-long">
                     <input class="w-100 mt-2 rounded" type="text" id="rod-size" placeholder="rod size cm">
-                        <input class="w-100 mt-2 rounded" type="text" id="covering" placeholder="covering cm">
+                    <input class="w-100 mt-2 rounded" type="text" id="covering" placeholder="covering cm">
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button onclick="calculateDepth()" type="button" class="btn btn-primary w-100">EffectiveDepth</button>
+                  <button onclick="calculateDepth()" type="button" class="btn btn-primary w-100">Effective Depth</button>
                 </div>
               </div>
             </div>
+            <!--  -->
             <!-- Step-4.B Safe Effective Depth of slab -->
+            <!--  -->
             <div class="col">
               <div class="card h-100">
                 <div class="card-body p-1">
                   <h5 class="card-title">Step-4.B Safe Effective Depth of slab</h5>
                   <h6>a. Short span <span id="Short-span-safe-effective-depth" class="text-danger"></span></h6>
                   <h6>b. Long span <span id="long-span-safe-effective-depth" class="text-danger"></span></h6>
-                  <input class="w-100 rounded" type="text" id="minimum-depth"
-                    placeholder="minimum-depth cm">
+                  <input class="w-100 rounded" type="text" id="minimum-depth" placeholder="minimum-depth cm">
                 </div>
                 <div class="card-footer">
                   <button onclick="calculateTotalDepth()" type="button"
-                    class="btn btn-primary w-100">TotalDepth</button>
+                    class="btn btn-primary w-100">Total Depth</button>
                 </div>
               </div>
             </div>
-            <!-- Step-4.B Area of tensile reinforcement -->
+            <!--  -->
+            <!-- Step-5 Area of tensile reinforcement -->
+            <!--  -->
             <div class="col">
               <div class="card h-100">
                 <div class="card-body p-1">
@@ -191,11 +197,50 @@
                   <h5 class="card-title">Step-5.B Spacing of tensile reinforcement for long span</h5>
                   <h6>a. Continuous = <span id="reinforcement-Continuous-long" class="text-danger"></span> cm c/c</h6>
                   <h6>b. Middle = <span id="reinforcement-Middle-long" class="text-danger"></span> cm c/c</h6>
-                  <h6>b. DisContinuous = <span id="reinforcement-DisContinuous-long" class="text-danger"></span> cm c/c</h6>
+                  <h6>b. DisContinuous = <span id="reinforcement-DisContinuous-long" class="text-danger"></span> cm c/c
+                  </h6>
                 </div>
                 <div class="card-footer">
                   <button onclick="calculateReinforcement()" type="button"
                     class="btn btn-primary w-100">Reinforcement</button>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+            <!-- Step-6 Check for share stress -->
+            <!--  -->
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body p-1">
+                  <!--show result -->
+                  <h5 class="card-title">Step-6 Check for share stress </h5>
+                  <h6>A. Short span = <span id="share-stress-short-span" class="text-danger"></span> kg/cm<sup>2</sup></h6>
+                  <h6>B. Long span = <span id="share-stress-long-span" class="text-danger"></span> kg/cm<sup>2</sup></h6>
+                </div>
+                <div class="card-footer">
+                  <button onclick="calculateShareStress()" type="button"
+                    class="btn btn-primary w-100">Share Stress</button>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+            <!-- Step-6 Check for bond stress -->
+            <!--  -->
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body p-1">
+                  <!--show result -->
+                  <h5 class="card-title">Step-7 Check for bond stress </h5>
+                  <h6 >needed rod per meter <span id="needed-rod-short"></span> nos</h6>
+                  <h6>A. Short span = <span id="bond-stress-short-span" class="text-danger"></span> kg/cm<sup>2</sup></h6>
+                  <input class="w-100 rounded" type="text" id="minimum-spacing-short-span" placeholder="minimum-spacing-shortSpan">
+                  <h6 class="mt-5">needed rod per meter <span id="needed-rod-long"></span> nos</h6>
+                  <h6>B. Long span = <span id="bond-stress-long-span" class="text-danger"></span> kg/cm<sup>2</sup></h6>
+                  <input class="w-100 rounded" type="text" id="minimum-spacing-long-span" placeholder="minimum-spacing-longSpan">
+                </div>
+                <div class="card-footer">
+                  <button onclick="calculateBondStress()" type="button"
+                    class="btn btn-primary w-100">Bond Stress</button>
                 </div>
               </div>
             </div>

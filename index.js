@@ -17,13 +17,13 @@ const calculateLoad = () => {
 
 // input value//
 const getInputValue = (id) => {
-    const numberValue = parseFloat(document.getElementById(id).value);
-    return numberValue;
+   const numberValue = parseFloat(document.getElementById(id).value);
+   return numberValue;
 }
 
 const getInnerText = (id) => {
-    const innerTextNumber =  parseFloat(document.getElementById(id).innerText);
-    return innerTextNumber;
+   const innerTextNumber = parseFloat(document.getElementById(id).innerText);
+   return innerTextNumber;
 }
 // set inner text //
 const setInnerText = (id, value) => {
@@ -130,16 +130,16 @@ const calculateReinforcement = () => {
    const ds = getInnerText('Short-span-safe-effective-depth');
    const rs = getInputValue('rod-size');
    const As_continuous = m_continuous / (fs * j * ds);
-   const as = ((3.14 * (rs*rs)) / 4);
+   const as = ((3.14 * (rs * rs)) / 4);
    const s_continuous = Math.floor(Math.round((100 * as) / As_continuous));
    setInnerText('reinforcement-Continuous', s_continuous);
    // middle
-   const m_middle = getInnerText('short-Middle-BM'); 
+   const m_middle = getInnerText('short-Middle-BM');
    const As_middle = m_middle / (fs * j * ds);
    const s_middle = Math.floor(Math.round((100 * as) / As_middle));
    setInnerText('reinforcement-Middle', s_middle);
    //discontinuous
-   const m_discontinuous = getInnerText('short-DisC-BM'); 
+   const m_discontinuous = getInnerText('short-DisC-BM');
    const As_discontinuous = m_discontinuous / (fs * j * ds);
    const s_discontinuous = Math.floor(Math.round((100 * as) / As_discontinuous));
    setInnerText('reinforcement-DisContinuous', s_discontinuous);
@@ -151,13 +151,57 @@ const calculateReinforcement = () => {
    const s_continuous_long = Math.floor(Math.round((100 * as) / As_continuous_long));
    setInnerText('reinforcement-Continuous-long', s_continuous_long);
    //middle
-   const m_middle_long = getInnerText('long-Middle-BM'); 
+   const m_middle_long = getInnerText('long-Middle-BM');
    const As_middle_long = m_middle_long / (fs * j * dl);
    const s_middle_long = Math.floor(Math.round((100 * as) / As_middle_long));
    setInnerText('reinforcement-Middle-long', s_middle_long);
    //discontinuous
-   const m_discontinuous_long = getInnerText('long-DisC-BM'); 
+   const m_discontinuous_long = getInnerText('long-DisC-BM');
    const As_discontinuous_long = m_discontinuous_long / (fs * j * dl);
    const s_discontinuous_long = Math.floor(Math.round((100 * as) / As_discontinuous_long));
    setInnerText('reinforcement-DisContinuous-long', s_discontinuous_long);
+}
+
+//////////////////////
+// calculateShareStress
+//////////////////////
+const calculateShareStress = () => {
+// short
+const ds = getInnerText('Short-span-safe-effective-depth');
+const Vs = getInnerText('result-shortSpan-sf');
+const vs = Vs / (100 * ds);
+setInnerText('share-stress-short-span', vs);
+
+const dl = getInnerText('long-span-safe-effective-depth');
+const Vl = getInnerText('result-longSpan-sf');
+const vl = Vl / (100 * dl);
+setInnerText('share-stress-long-span', vl);
+}
+
+// /////////////////////////
+// calculateBondStress
+////////////////////////////
+const calculateBondStress = () => {
+   //short
+   const j = getInnerText('j');
+   const rs = getInputValue('rod-size');
+   const Spacing_short = getInputValue('minimum-spacing-short-span');
+   const ds = getInnerText('Short-span-safe-effective-depth');
+   const Vs = getInnerText('result-shortSpan-sf');
+   const rodNos = 100 / Spacing_short;
+   setInnerText('needed-rod-short', rodNos);
+   const perimeter = rodNos * 3.14 * rs;
+   const us = Vs / (perimeter * j * ds);
+   setInnerText('bond-stress-short-span', us);
+
+   //long
+   const Spacing_long = getInputValue('minimum-spacing-long-span');
+   const dl = getInnerText('long-span-safe-effective-depth');
+   const Vl = getInnerText('result-longSpan-sf');
+   const rodNosLong = 100 / Spacing_long;
+   setInnerText('needed-rod-long', rodNosLong);
+   const perimeterLong = rodNosLong * 3.14 * rs;
+   const ul = Vl / (perimeterLong * j * dl);
+   setInnerText('bond-stress-long-span', ul);
+
 }
